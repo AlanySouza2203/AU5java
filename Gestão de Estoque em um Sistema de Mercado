@@ -1,0 +1,52 @@
+package Estoque.mercado;
+
+import java.util.Scanner;
+
+public class Controleestoque {
+
+	public static void main(String[] args) { 
+		Scanner entrada = new Scanner (System.in);
+		
+		
+		// Declaraçao de Variavel
+		
+	 String nomeproduto = "Macarrao Espaguete 500g";
+	 int quantidadeEstoque = 200;
+	 double precoproduto = 17.02;
+	 boolean disponivel = true;
+	char categoria = 'A';
+	long codigobarra = 7896005213018L;
+	 
+	//Exibir informacoes do Produto
+	System.out.println("====Informaçoes do Produto ====");
+	System.out.println("Nome:" + nomeproduto);
+	System.out.println("Quantidade no Estoque:" + quantidadeEstoque + " unidades");
+	System.out.println("preco R$; " +  precoproduto);
+	System.out.println("Disponivel:" + (disponivel ? "sim" : "nao") );
+	System.out.println("Categoria:" +  categoria);
+	System.out.println("Codigo de barras:" + codigobarra );
+	
+	//Exibir informacoes da venda 
+    System.out.println("\nSIMULAÇÃO DE VENDA");
+    System.out.print("Quantidade vendida: ");
+    int quantidadeVendida = entrada.nextInt();  
+    
+    if(quantidadeVendida <= quantidadeEstoque) {
+        quantidadeEstoque -= quantidadeVendida;  
+        System.out.println("Venda realizada com sucesso!");
+        System.out.println("Estoque atual: " + quantidadeEstoque + " unidades");  
+    } else {
+        System.out.println("Quantidade disponível:" + quantidadeEstoque + " unidades.");
+    }
+    
+    //Exibir informacoes  da reposição
+    System.out.println("\nREPOSIÇÃO DE ESTOQUE");
+    System.out.print("Quantidade a acrescentar: ");
+    int quantidade = entrada.nextInt();
+    
+    quantidadeEstoque += quantidade;
+    System.out.println("Estoque atualizado: " + quantidadeEstoque + " unidades");
+    
+    entrada.close();
+}
+}
