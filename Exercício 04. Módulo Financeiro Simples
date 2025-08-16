@@ -1,0 +1,54 @@
+package FinanceiroSimples;
+
+import java.util.Scanner;
+
+public class FinanceiroProdutos {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		// declaração de variáveis
+        String nomeProduto;
+        float precoCompra;
+        float precoVenda;
+        int quantidadeVendida;
+        
+        System.out.println("Produto:");
+        nomeProduto = scanner.nextLine();
+        System.out.println("O valor da Compra:");
+        precoCompra = scanner.nextFloat();
+        System.out.println("O valor da Venda:");
+        precoVenda = scanner.nextFloat();
+        System.out.println("A Quantidade vendida:");
+        quantidadeVendida = scanner.nextInt();
+        
+        // cálculo 
+        float receitaTotal = precoVenda * quantidadeVendida;
+        float custoTotal = precoCompra * quantidadeVendida;
+        float Lucro = receitaTotal - custoTotal;
+        float imposto = receitaTotal * 0.08f;
+        float LucroLiquido = Lucro - imposto;
+        
+        // Exibe Análise de Resultados
+        System.out.println("\n================");
+        System.out.printf("Produto: %s\n", nomeProduto);
+        System.out.printf("Receita Total: R$ %.2f\n", receitaTotal);
+        System.out.printf("Custo Total: R$ %.2f\n", custoTotal);
+        System.out.printf("Lucro Bruto: R$ %.2f\n", Lucro);
+        System.out.printf("Imposto sobre Venda (8%%): R$ %.2f\n", imposto);
+        System.out.printf("Lucro Líquido: R$ %.2f\n", LucroLiquido);
+        
+        // Exibe Resultados
+        System.out.println("\n========= Resultado Financeiro:==========");
+        if(LucroLiquido > 0) {
+            System.out.printf("O produto %s gerou um lucro líquido de R$ %.2f. Muito Bom! \n", 
+                             nomeProduto, LucroLiquido);
+        }
+        else { 
+            System.out.printf("O produto %s não gerou lucro líquido. Recomenda-se revisão do preço.\n", 
+                             nomeProduto);
+        }
+        
+        scanner.close();
+    }
+}
