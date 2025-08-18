@@ -1,0 +1,58 @@
+package Sistema_de_Frete;
+
+import java.util.Scanner;
+
+public class Calculo_de_Frete_com_Desconto {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Digite o nome do cliente:");
+		String nome = scanner.nextLine();
+
+		// Tipo de cliente
+		System.out.println("\n==== Selecione o tipo de cliente: =====");
+		System.out.println("1 - Comum");
+		System.out.println("2 - VIP");
+		System.out.println("3 - Funcionarios");
+		System.out.print("Tipo: ");
+		int tipo = scanner.nextInt();
+
+		System.out.println("\nDistância em quilômetros:");
+		double distancia = scanner.nextDouble();
+
+		System.out.println("\nDigite o Valor por km (R$):");
+		double valorKm = scanner.nextDouble();
+
+		// Cálculos
+		double total = distancia * valorKm;
+		double desconto = 0;
+
+		if (tipo == 2) {
+			desconto = total * 0.10; // 10% clientes vip
+		} else if (tipo == 3) {
+			desconto = total * 0.20; // 20% funcionarios
+		}
+		double valorFinal = total - desconto;
+
+		// Resultado
+		System.out.println("\n=== Nota do Frete =====");
+		System.out.println("Cliente: " + nome);
+
+		if (tipo == 1) {
+			System.out.println("Tipo: Comum");
+		} else if (tipo == 2) {
+			System.out.println("Tipo: VIP");
+		} else {
+			System.out.println("Tipo: Funcionarios");
+		}
+
+		System.out.printf("Distância: %.1f km\n", distancia);
+		System.out.printf("Valor por km: R$ %.2f\n", valorKm);
+		System.out.printf("Valor Total: R$ %.2f\n", total);
+		System.out.printf("Desconto: R$ %.2f\n", desconto);
+		System.out.printf("Valor final: R$ %.2f\n", valorFinal);
+
+		scanner.close();
+	}
+}
